@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Net.Mail;
 using System.Windows;
 using System.Windows.Controls;
 using GoodyDataLib.Models;
@@ -76,6 +78,35 @@ namespace GoodyAppDesktop
             }
         }
 
+        private async void SendEmail()
+        {
+            try
+            {
+                //адрес почты отправителя и имя отправителя
+                MailAddress from = new MailAddress("", "");
+                //адрес почты получателя
+                MailAddress to = new MailAddress("");
+                MailMessage message = new MailMessage(from, to)
+                {
+                    Subject = "", //Заголовок сообщения
+                    Body = $"" //Текст сообщения
+                };
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    //Логин и пароль почты отправителя
+                    Credentials = new NetworkCredential("", ""),
+                    EnableSsl = true
+                };
+                await smtp.SendMailAsync(message);
+            }
+            catch
+            {
+                MessageBox.Show("Произошла ошибка",
+                "Восстановление пароля", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+            
+
         private void ForgotButtonClick(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("На вашу почту было выслано письмо, для восстановления пароля",
@@ -85,6 +116,7 @@ namespace GoodyAppDesktop
             Storage.Name = $"{name} {middleName}";
             Window window = new MainWindow(Height, Width, Left, Top, WindowState);
             window.Show();
+            //SendEmail();
             Close();
         }
     }

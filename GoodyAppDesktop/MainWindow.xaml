@@ -1,0 +1,221 @@
+﻿<Window x:Class="GoodyAppDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GoodyAppDesktop"
+        mc:Ignorable="d"
+        Title="GoodyApp"
+        Icon="Resources/icon.png"
+        MinHeight="400" MinWidth="800"
+        Height="450" Width="800">
+
+    <Window.Resources>
+
+        <Style TargetType="Label" x:Key="LabelDefaultStyle">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ButtonDefaultStyle">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10"
+                                BorderThickness="1"
+                                SnapsToDevicePixels="True"
+                                Background="White">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Stretch"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="ImageDefaultStyle">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Image" x:Key="MenuImageStyle">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="HelloLabel"
+                 Grid.Row="0"
+                 HorizontalAlignment="Center"
+                 FontSize="15"/>
+
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0"/>
+            <Grid Grid.Row="0" Grid.Column="1"/>
+            <Grid Grid.Row="0" Grid.Column="2"/>
+
+            <Grid Grid.Row="1" Grid.Column="0"/>
+            <Grid Grid.Row="1" Grid.Column="2"/>
+
+            <Grid Grid.Row="2" Grid.Column="0"/>
+            <Grid Grid.Row="2" Grid.Column="1"/>
+            <Grid Grid.Row="2" Grid.Column="2"/>
+
+            <Grid Grid.Row="1"
+                  Grid.Column="1">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0"
+                            Grid.Row="1"
+                            Style="{StaticResource ImageDefaultStyle}"
+                            Click="OpenGraphicsByImage">
+                        
+                        <Image MinHeight="100"
+                               Source="Resources/pie-chart.png"
+                               Margin="10, 10, 10, 10"/>
+                        
+                    </Button>
+
+                    <Button Grid.Column="1"
+                            Grid.Row="1"
+                            Click="OpenStatsByImage"
+                            Style="{StaticResource ImageDefaultStyle}">
+
+                        <Image MinHeight="100"
+                               Source="Resources/paste-special.png"
+                               Margin="10, 10, 10, 10"/>
+
+                    </Button>
+
+                    <Button Grid.Column="2"
+                            Grid.Row="1"
+                            Click="OpenJournalByImage"
+                            Style="{StaticResource ImageDefaultStyle}">
+
+                        <Image MinHeight="100"
+                               Source="Resources/list.png"
+                               Margin="10, 10, 10, 10"/>
+
+                    </Button>
+
+                    <Button Grid.Column="3"
+                            Grid.Row="1"
+                            Click="OpenMapsByImage"
+                            Style="{StaticResource ImageDefaultStyle}">
+
+                        <Image MinHeight="100"
+                               Source="Resources/user-location.png"
+                               Margin="10, 10, 10, 10"/>
+
+                    </Button>
+
+                    <Button Grid.Column="5"
+                            Grid.Row="1"
+                            Click="OpenMenuByImage"
+                            Style="{StaticResource ImageDefaultStyle}">
+
+                        <Image MinHeight="100"
+                               Source="Resources/squared-menu.png"
+                               Margin="10, 10, 10, 10"/>
+
+                    </Button>
+
+                    <Label Grid.Column="0"
+                             Grid.Row="2"
+                             BorderThickness="0"
+                             MouseDoubleClick="OpenGraphics"
+                             Style="{StaticResource LabelDefaultStyle}">
+                        Схемы и графики
+                    </Label>
+
+                    <Label Grid.Column="1"
+                             Grid.Row="2"
+                             BorderThickness="0"
+                             MouseDoubleClick="OpenStats"
+                             Style="{StaticResource LabelDefaultStyle}">
+                        Статистика
+                    </Label>
+
+                    <Label Grid.Column="2"
+                             Grid.Row="2"
+                             BorderThickness="0"
+                             MouseDoubleClick="OpenJournal"
+                             Style="{StaticResource LabelDefaultStyle}">
+                        Журнал
+                    </Label>
+
+                    <Label Grid.Column="3"
+                             Grid.Row="2"
+                             BorderThickness="0"
+                             MouseDoubleClick="OpenMaps"
+                             Style="{StaticResource LabelDefaultStyle}">
+                        Карта запросов
+                    </Label>
+
+                    <Label Grid.Column="5"
+                             Grid.Row="2"
+                             BorderThickness="0"
+                             MouseDoubleClick="OpenMenu"
+                             Style="{StaticResource LabelDefaultStyle}">
+                        Меню
+                    </Label>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+        
+    </Grid>
+    
+</Window>

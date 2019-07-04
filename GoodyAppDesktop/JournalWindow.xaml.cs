@@ -1,8 +1,7 @@
-﻿using GoodyDataLib.Models;
-using GoodyDataLib.Services;
+﻿//using GoodyDataLib.Models;
+//using GoodyDataLib.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -17,7 +16,7 @@ namespace GoodyAppDesktop
         public string ConnectionString { get; set; } =
             $"https://goodyreturnevent.azurewebsites.net/api/ReturnUser?code=69UBhi60coeNm3r77ePJt9oP6ZmD4h2HdTakq4qbDD/UxQpLFDKH/A==";
 
-         
+
         public JournalWindow()
         {
             InitializeComponent();
@@ -38,33 +37,33 @@ namespace GoodyAppDesktop
 
         private async void SetContent()
         {
-            try
-            {
-                EventService @event = new EventService(ConnectionString);
-                List<EventInfo> infos = await @event.GetDistrictEventsAsync(10, 34, Storage.CurrentDistrict);
+            //try
+            //{
+            //    EventService @event = new EventService(ConnectionString);
+            //    List<EventInfo> infos = await @event.GetDistrictEventsAsync(10, 34, Storage.CurrentDistrict);
 
-                for (int i = 0; i < infos.Count; i++)
-                {
-                    MainTable.Items.Add(new JournalItem
-                    {
-                        ID = infos[i].CreatorID,
-                        Age = infos[i].AuthorAge,
-                        Address = infos[i].Address,
-                        Description = infos[i].Description,
-                        District = infos[i].District,
-                        Resources = infos[i].Resources,
-                        State = infos[i].State,
-                        Time = $"{infos[i].CreatedAt.ToLongDateString()} {infos[i].CreatedAt.ToLongTimeString()}"
-                    });
-                }
+            //    for (int i = 0; i < infos.Count; i++)
+            //    {
+            //        MainTable.Items.Add(new JournalItem
+            //        {
+            //            ID = infos[i].CreatorID,
+            //            Age = infos[i].AuthorAge,
+            //            Address = infos[i].Address,
+            //            Description = infos[i].Description,
+            //            District = infos[i].District,
+            //            Resources = infos[i].Resources,
+            //            State = infos[i].State,
+            //            Time = $"{infos[i].CreatedAt.ToLongDateString()} {infos[i].CreatedAt.ToLongTimeString()}"
+            //        });
+            //    }
 
-                //После работы нейросети может быть отображено сообщение
-                //MessageBox.Show("Обнаружен подозрительный гражданин!", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            catch
-            {
-                //В данным момент ни один сервер не работает
-            }
+            //    //После работы нейросети может быть отображено сообщение
+            //    //MessageBox.Show("Обнаружен подозрительный гражданин!", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //}
+            //catch
+            //{
+            //    //В данным момент ни один сервер не работает
+            //}
 
             LoadScreen.Visibility = Visibility.Hidden;
             MainData.Visibility = Visibility.Visible;

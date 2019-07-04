@@ -3,8 +3,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Windows;
 using System.Windows.Controls;
-using GoodyDataLib.Models;
-using GoodyDataLib.Services;
+//using GoodyDataLib.Models;
+//using GoodyDataLib.Services;
 
 namespace GoodyAppDesktop
 {
@@ -13,11 +13,11 @@ namespace GoodyAppDesktop
     /// </summary>
     public partial class EnterWindow : Window
     {
-        public static string ConnectionString { get; set; } = $"Data Source=zhekusonsql.database.windows.net;" +
-            $" Initial Catalog = GoodyBase;" +
+        public static string ConnectionString { get; set; } = $"Data Source=" +
+            $" Initial Catalog =;" +
             $"Integrated Security = True;" +
-            $"User ID = zhekuson;" +
-            $"Password=wasd#1580;" +
+            $"User ID =;" +
+            $"Password=;" +
             $"Trusted_Connection = False;" +
             $"Encrypt=True;";
 
@@ -49,33 +49,33 @@ namespace GoodyAppDesktop
 
         private async void EnterButtonClick(object sender, RoutedEventArgs e)
         {
-            if(Login.Text != "Введите логин")
-            {
-                AdministratorService administrator = new AdministratorService(ConnectionString);
-                System.Collections.Generic.List<AdministratorInfo> admins = await administrator.GetRecordsAsync("Login", Login.Text);
-                if (admins.Count != 0)
-                {
-                    if (admins[0].Password == Password.Password)
-                    {
-                        Storage.Name = $"{admins[0].Name} {admins[0].FName}";
-                        Window window = new MainWindow(Height, Width, Left, Top, WindowState);
-                        window.Show();
-                        Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Неверный пароль!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Несуществующий логин!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Введите логин!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            //if(Login.Text != "Введите логин")
+            //{
+            //    AdministratorService administrator = new AdministratorService(ConnectionString);
+            //    System.Collections.Generic.List<AdministratorInfo> admins = await administrator.GetRecordsAsync("Login", Login.Text);
+            //    if (admins.Count != 0)
+            //    {
+            //        if (admins[0].Password == Password.Password)
+            //        {
+            Storage.Name = "Незнакомец";// $"{admins[0].Name} {admins[0].FName}";
+            Window window = new MainWindow(Height, Width, Left, Top, WindowState);
+            window.Show();
+            Close();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Неверный пароль!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Несуществующий логин!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Введите логин!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         }
 
         private async void SendEmail()
@@ -105,14 +105,14 @@ namespace GoodyAppDesktop
                 "Восстановление пароля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-            
+
 
         private void ForgotButtonClick(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("На вашу почту было выслано письмо, для восстановления пароля",
                 "Восстановление пароля", MessageBoxButton.OK, MessageBoxImage.Information);
-            var name = "Алексей";
-            var middleName = "Петрович";
+            string name = "Алексей";
+            string middleName = "Петрович";
             Storage.Name = $"{name} {middleName}";
             Window window = new MainWindow(Height, Width, Left, Top, WindowState);
             window.Show();

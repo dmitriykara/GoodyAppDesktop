@@ -40,7 +40,7 @@
     </Reference>
     <Reference Include="De.TorstenMandelkow.MetroChart, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Downloads\modernuicharts\sourceCode\sourceCode\ModernUIChart\De.TorstenMandelkow.MetroChart.WPF\bin\Debug\De.TorstenMandelkow.MetroChart.dll</HintPath>
+      <HintPath>..\De.TorstenMandelkow.MetroChart.WPF\bin\Debug\De.TorstenMandelkow.MetroChart.dll</HintPath>
     </Reference>
     <Reference Include="Gmap.net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GMap.Net.1.0.1\lib\Gmap.net.dll</HintPath>
